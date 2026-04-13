@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template, url_for
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -7,6 +7,11 @@ from users import SqlAlchemyBase
 
 
 app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    return redirect(url_for("works_log"))
 
 
 @app.route("/works")
